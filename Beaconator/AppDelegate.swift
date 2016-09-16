@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+//        Alamofire.request(.GET, "https://www.theknot.com").responseJSON { response in
+//            print(response.timeline)
+//        }
+        
+//        Alamofire.request(.GET, "https://www.theknot.com").responseJSON { response in
+//            print(response.metrics)
+//        }
+
+        Alamofire.request(.GET, "https://www.theknot.com")
+            .response { request, response, data, error in
+                print(request)
+                print(response)
+                print(error)
+        }
+        
+        Alamofire.request(.GET, "https://www.theknot.com")
+            .responseJSON { response  in
+                print(response)
+        }
         return true
     }
 
